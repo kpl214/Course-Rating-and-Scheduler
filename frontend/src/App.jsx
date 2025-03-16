@@ -1,23 +1,24 @@
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Home from "./pages/home";
-import About from "./pages/about";
-import RateCourse from './pages/rateCourse';
+import Home from "./components/pages/home";
+import About from "./components/pages/about";
+import RateCourse from './components/pages/rateCourse';
+import { Navbar } from './components/navbar';
+import Contact from './components/pages/contact';
 
 export default function App() {
   return (
     <Router>
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/rate-course">Rate a Course</Link></li>
-        </ul>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/rate-course" element={<RateCourse />} />
-      </Routes>
+      <div className="App">
+        <Navbar />
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/rateCourse" element={<RateCourse />} />
+          </Routes>
+        </div>
+      </div>
     </Router>
   );
 }
