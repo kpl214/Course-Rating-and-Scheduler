@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Home from "./components/pages/home";
-import About from "./components/pages/about";
-import RateCourse from './components/pages/rateCourse';
+import Home from "./pages/home";
+import About from "./pages/about";
+import RateCourse from './pages/rateCourse';
 import { Navbar } from './components/navbar';
-import Contact from './components/pages/contact';
+import Contact from './pages/contact';
 
 export default function App() {
   return (
