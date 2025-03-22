@@ -1,0 +1,11 @@
+.App {
+  background-color: #fefefe;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.content {
+  margin-top: 60px;
+  padding: 20px;
+}
