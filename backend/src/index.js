@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from "cors";
 import dotenv from "dotenv";
+import courseRouter from "./routes/course.route.js"
 
 import { connectDB } from "./lib/db.js";
 
@@ -17,6 +18,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello World");
 })
+
+app.use("/api/courses", courseRouter);
 
 app.listen(5000, () => {
   console.log(`Server running on port 5000`)
