@@ -21,7 +21,6 @@ const RateCourse = () => {
       <button className="btn btn-xl" onClick={handlePostClick}>
         Post
       </button>
-      <label>{comment}</label>
     </div>
   );
 };
