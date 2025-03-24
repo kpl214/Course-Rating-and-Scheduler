@@ -4,6 +4,7 @@ import About from "./pages/about";
 import RateCourse from './pages/rate-course/rateCourse';
 import { Navbar } from './components/navbar';
 import Contact from './pages/contact';
+import Report from './pages/Report';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/rateCourse" element={<RateCourse />} />
+            <Route path="/report" element={<Report />} />
           </Routes>
         </div>
       </div>
