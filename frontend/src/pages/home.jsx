@@ -17,7 +17,7 @@ const Home = () => {
           <p className="mb-5">
             Our website is meant to be a place where one can share their experiences
           </p>
-          <NavLink to="/rateCourse">
+          <NavLink to="/coursesList">
             <button className="btn btn-primary">Get Started</button>
           </NavLink>
         </div>

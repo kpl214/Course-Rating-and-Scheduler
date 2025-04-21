@@ -1,14 +1,45 @@
 import axios from "axios";
+import { useState, useEffect } from "react";
+import { useAuthInfo } from "@propelauth/react";
 
-export const useRateCourse = () => {
+export const useRateCourse = (code) => {
+  const [reviews, setReviews] = useState([]);
+  const { accessToken } = useAuthInfo();
+
+  const fetchData = async () => {
+    const res = await axios.get(
+      `http://localhost:5000/api/courses/${code}/reviews`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    setReviews(res.data);
+  };
+
   const postComment = async (comment) => {
     await axios.post(
-      "http://localhost:5000/api/courses/67df706603048d995b046fe3/reviews",
-      { rating: 5, review: comment }
+      `http://localhost:5000/api/courses/${code}/reviews`,
+      {
+        rating: 5,
+        review: comment,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
     );
+    await fetchData();
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return {
     postComment,
+    reviews,
   };
 };
