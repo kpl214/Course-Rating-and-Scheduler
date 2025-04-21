@@ -4,9 +4,9 @@ import Course from "../models/course.model.js"
 export const createReview = async (req, res) => {
   try {
     const { review, rating } = req.body;
-    const { id: courseId } = req.params;
+    const { code: courseCode } = req.params;
 
-    const course = await Course.findById(courseId);
+    const course = await Course.findOne({code: courseCode});
     const newReview = new Review({
       review,
       rating,
@@ -20,3 +20,30 @@ export const createReview = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export const getCourses = async (req, res) => {
+  try {
+
+    const courses = await Course.find();
+    res.status(200).json(courses);
+
+  } catch (error) {
+    console.log("Error in course controller: ", error.message);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const getReviews = async (req, res) => {
+  try {
+    const { code: courseCode } = req.params;
+
+    const course = await Course.findOne({code: courseCode});
+    const reviews = await Review.find({courseId: course._id});
+    res.status(200).json(reviews);
+
+  } catch (error) {
+    console.log("Error in course controller: ", error.message);
+    res.status(500).json({ error: error.message });
+  }
+};
+

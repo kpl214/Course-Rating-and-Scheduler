@@ -17,10 +17,8 @@ const Home = () => {
           <p className="mb-5">
             Our website is meant to be a place where one can share their experiences
           </p>
-          <NavLink to="/rateCourse">
-            <button className="bg-[#03440C] hover:bg-[#079D1B] text-white font-bold py-2 px-4 rounded transition-colors duration-200">
-              Get Started
-            </button>
+          <NavLink to="/coursesList">
+            <button className="btn btn-primary">Get Started</button>
           </NavLink>
         </div>
       </div>
