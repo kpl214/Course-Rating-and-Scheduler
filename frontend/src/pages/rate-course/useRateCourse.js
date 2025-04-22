@@ -18,11 +18,11 @@ export const useRateCourse = (code) => {
     setReviews(res.data);
   };
 
-  const postComment = async (comment) => {
+  const postComment = async (comment, rating) => {
     await axios.post(
       `http://localhost:5000/api/courses/${code}/reviews`,
       {
-        rating: 5,
+        rating: rating,
         review: comment,
       },
       {
