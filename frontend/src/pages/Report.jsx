@@ -10,7 +10,7 @@ const Report = () => {
       return;
     }
     alert("Report submitted successfully!");
-    setReportText(""); // Clear input after submission
+    setReportText("");
     setShowModal(false);
   };
 
@@ -21,12 +21,10 @@ const Report = () => {
         If you encounter any issues, please describe them below.
       </p>
 
-      {/* Open Report Modal Button */}
       <button className="btn btn-warning" onClick={() => setShowModal(true)}>
         Open Report Form
       </button>
 
-      {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg text-black w-96 shadow-lg">

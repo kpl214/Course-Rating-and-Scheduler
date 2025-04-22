@@ -1,57 +1,48 @@
-import React, { useState } from "react";
+import React from "react";
+
+const members = [
+    {
+        name: "Pablo Sabogal",
+        role: "Product Manager",
+        email: "psabogal@ufl.edu",
+    },
+    {
+        name: "Krish Patel",
+        role: "Scrum Master",
+        email: "kpatel13@ufl.edu",
+    },
+    {
+        name: "Lance Tan",
+        role: "Backend Developer",
+        email: "lance.tan@ufl.edu",
+    },
+    {
+        name: "Salena Till",
+        role: "Front-End Developer",
+        email: "salena.till@ufl.edu",
+    },
+];
 
 const Contact = () => {
-    const [form, setForm] = useState({ name: "", email: "", message: "" });
-
-    // input changes for the fields
-    const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
-    };
-
-    // form submission with name, email, and message
-    // added contact.model.js, need to create contact.route.js in backend
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Submitted:", form);
-        setForm({ name: "", email: "", message: "" });
-    };
-
     return (
-        <div className="max-w-xl mx-auto p-6">
-            <h1 className="text-3xl font-bold mb-2">Contact Page</h1>
-            <p className="mb-4">Give us feedback!</p>
-            <form onSubmit={handleSubmit} className="space-y-4">
-                {["name", "email"].map((field) => (
-                    <div key={field}>
-                        <label className="block capitalize">{field}</label>
-                        <input
-                            type={field === "email" ? "email" : "text"}
-                            name={field}
-                            value={form[field]}
-                            onChange={handleChange}
-                            required
-                            className="w-full border rounded px-3 py-2"
-                        />
+        <div className="max-w-5xl mx-auto p-6">
+            <h1 className="text-3xl font-bold mb-6 text-center">Project Members</h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {members.map((member) => (
+                    <div key={member.email} className="card bg-base-100 shadow-md border">
+                        <div className="card-body">
+                            <h2 className="card-title">{member.name}</h2>
+                            <p className="text-gray-600">{member.role}</p>
+                            <a
+                                href={`mailto:${member.email}`}
+                                className="text-blue-600 hover:underline"
+                            >
+                                {member.email}
+                            </a>
+                        </div>
                     </div>
                 ))}
-                <div>
-                    <label className="block">Message</label>
-                    <textarea
-                        name="message"
-                        value={form.message}
-                        onChange={handleChange}
-                        rows="4"
-                        required
-                        className="w-full border rounded px-3 py-2"
-                    />
-                </div>
-                <button
-                    type="submit"
-                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-                >
-                    Submit
-                </button>
-            </form>
+            </div>
         </div>
     );
 };
