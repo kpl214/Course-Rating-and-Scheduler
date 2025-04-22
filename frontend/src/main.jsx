@@ -6,6 +6,8 @@ import ReactDOM from "react-dom/client";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <RequiredAuthProvider authUrl={process.env.VITE_AUTH_URL}>
         <App />
+    </RequiredAuthProvider>
   </React.StrictMode>,
 )
