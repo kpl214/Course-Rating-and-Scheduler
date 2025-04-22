@@ -2,6 +2,7 @@ import express from 'express';
 import cors from "cors";
 import dotenv from "dotenv";
 import courseRouter from "./routes/course.route.js"
+import reportRouter from "./routes/report.route.js"
 
 import { connectDB } from "./lib/db.js";
 
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 })
 
 app.use("/api/courses", courseRouter);
+app.use("/api/report", reportRouter);
 
 app.listen(5000, () => {
   console.log(`Server running on port 5000`)

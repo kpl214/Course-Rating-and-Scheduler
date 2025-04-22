@@ -4,14 +4,32 @@ const Report = () => {
   const [showModal, setShowModal] = useState(false);
   const [reportText, setReportText] = useState("");
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (reportText.trim() === "") {
       alert("Please enter a description before submitting.");
       return;
     }
-    alert("Report submitted successfully!");
-    setReportText("");
-    setShowModal(false);
+
+    try {
+      const response = await fetch("http://localhost:5000/api/report", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ description: reportText }),
+      });
+
+      if (response.ok) {
+        alert("Report submitted successfully!");
+        setReportText("");
+        setShowModal(false);
+      } else {
+        const data = await response.json();
+        alert(`Error: ${data.error}`);
+      }
+    } catch (err) {
+      alert("Server error. Please try again later.");
+    }
   };
 
   return (
@@ -22,7 +40,10 @@ const Report = () => {
       </p>
 
       {/* Open Report Modal Button */}
-      <button className="btn bg-[#004aad] text-white hover:bg-[#f57c00]" onClick={() => setShowModal(true)}>
+      <button
+        className="btn bg-[#004aad] text-white hover:bg-[#f57c00]"
+        onClick={() => setShowModal(true)}
+      >
         Open Report Form
       </button>
 
@@ -44,7 +65,10 @@ const Report = () => {
               >
                 Cancel
               </button>
-              <button className="btn bg-[#004aad] text-white hover:bg-[#f57c00]" onClick={handleSubmit}>
+              <button
+                className="btn bg-[#004aad] text-white hover:bg-[#f57c00]"
+                onClick={handleSubmit}
+              >
                 Submit
               </button>
             </div>
