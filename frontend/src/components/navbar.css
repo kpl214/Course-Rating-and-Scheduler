@@ -1,5 +1,5 @@
 .active {
-    background-color: #057614;
+    background-color: #f57c00;
 }
 
 nav {
@@ -8,7 +8,7 @@ nav {
     align-items: center;
     width: 100vw;
     padding: 10px 20px;
-    background-color: #03440C;
+    background-color: #004aad;
     position: sticky;
     top: 0;
     left: 0;
@@ -49,7 +49,7 @@ nav ul li a {
 }
 
 nav ul li a:not(.active):hover {
-    background-color: #079D1B;
+    background-color: #f57c00;
 }
 
 nav .menu {

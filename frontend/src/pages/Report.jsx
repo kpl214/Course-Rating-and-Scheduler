@@ -22,7 +22,7 @@ const Report = () => {
       </p>
 
       {/* Open Report Modal Button */}
-      <button className="btn btn-warning" onClick={() => setShowModal(true)}>
+      <button className="btn bg-[#004aad] text-white hover:bg-[#f57c00]" onClick={() => setShowModal(true)}>
         Open Report Form
       </button>
 
@@ -40,12 +40,12 @@ const Report = () => {
             ></textarea>
             <div className="flex justify-end gap-2 mt-4">
               <button
-                className="btn btn-secondary"
+                className="btn bg-[#f57c00] text-white hover:bg-[#004aad]"
                 onClick={() => setShowModal(false)}
               >
                 Cancel
               </button>
-              <button className="btn btn-primary" onClick={handleSubmit}>
+              <button className="btn bg-[#004aad] text-white hover:bg-[#f57c00]" onClick={handleSubmit}>
                 Submit
               </button>
             </div>
