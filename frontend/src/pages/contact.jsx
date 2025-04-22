@@ -13,7 +13,7 @@ const members = [
     },
     {
         name: "Lance Tan",
-        role: "Backend Developer",
+        role: "Back-end Developer",
         email: "lance.tan@ufl.edu",
     },
     {
