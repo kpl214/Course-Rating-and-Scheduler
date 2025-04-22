@@ -10,7 +10,7 @@ export const CoursesList = () => {
       <div className="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {courses.map((c) => (
           <Link
-            to={`/rateCourse/&{c.code}`}
+            to={`/rateCourse/${c.code}`}
             key={c.code}
             className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition duration-300"
           >
