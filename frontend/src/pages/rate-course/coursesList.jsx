@@ -1,14 +1,28 @@
 import { useGetCourses } from "./useGetCourses";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
-//need to fix the course name at the top of the respective rating page
 
 export const CoursesList = () => {
   const { courses } = useGetCourses();
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredCourses = courses.filter((c) =>
+    c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    c.code.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   
   return (
+    <div className="p-10">
+      <input
+        type="text"
+        placeholder="Search for a course..."
+        className="input input-bordered w-full mb-6"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
       <div className="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {courses.map((c) => (
+        {filteredCourses.map((c) => (
           <Link
             to={`/rateCourse/${c.code}`}
             key={c.code}
@@ -19,23 +33,6 @@ export const CoursesList = () => {
           </Link>
         ))}
       </div>
-    // <table className="table">
-    //   <thead>
-    //     <tr>
-    //       <th>Course ID</th>
-    //       <th>Course Name</th>
-    //     </tr>
-    //   </thead>
-    //   <tbody>
-    //   {courses.map((c) => {
-    //     return (
-    //       <tr key={c.code}>
-    //         <td><a href={`/rateCourse/${c.code}`} className="link">{c.code}</a></td>
-    //         <td>{c.name}</td>
-    //       </tr>
-    //     );
-    //   })}
-    //   </tbody>
-    // </table>
-  );
+    </div>
+    );
 };
