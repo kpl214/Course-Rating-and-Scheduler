@@ -17,7 +17,7 @@ export const Navbar = () => {
             </div>
             <ul className={menuOpen ? "open" : ""}>
                 <li><NavLink to="/about">About</NavLink></li>
-                <li><NavLink to="/rateCourse">Rate Course</NavLink></li>
+                <li><NavLink to="/coursesList">Rate Course</NavLink></li>
                 <li><NavLink to="/contact">Contact Us</NavLink></li>
                 <li><NavLink to="/report">Report</NavLink></li>
                 <li>
