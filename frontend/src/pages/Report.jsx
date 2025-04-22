@@ -9,7 +9,7 @@ const Report = () => {
       alert("Please enter a description before submitting.");
       return;
     }
-  
+
     try {
       const response = await fetch("http://localhost:5000/api/report", {
         method: "POST",
@@ -18,7 +18,7 @@ const Report = () => {
         },
         body: JSON.stringify({ description: reportText }),
       });
-  
+
       if (response.ok) {
         alert("Report submitted successfully!");
         setReportText("");
@@ -40,7 +40,10 @@ const Report = () => {
       </p>
 
       {/* Open Report Modal Button */}
-      <button className="btn bg-[#004aad] text-white hover:bg-[#f57c00]" onClick={() => setShowModal(true)}>
+      <button
+        className="btn bg-[#004aad] text-white hover:bg-[#f57c00]"
+        onClick={() => setShowModal(true)}
+      >
         Open Report Form
       </button>
 
@@ -62,7 +65,10 @@ const Report = () => {
               >
                 Cancel
               </button>
-              <button className="btn bg-[#004aad] text-white hover:bg-[#f57c00]" onClick={handleSubmit}>
+              <button
+                className="btn bg-[#004aad] text-white hover:bg-[#f57c00]"
+                onClick={handleSubmit}
+              >
                 Submit
               </button>
             </div>
