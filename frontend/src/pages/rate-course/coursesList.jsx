@@ -26,9 +26,9 @@ export const CoursesList = () => {
           <Link
             to={`/rateCourse/${c.code}`}
             key={c.code}
-            className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition duration-300"
+            className="bg-white rounded-xl shadow-md p-6 hover:bg-gray-200 hover:text-black transition duration-300"
           >
-            <h2 className="text-xl font-semibold text-[#004aad]">{c.name}</h2>
+            <h2 className="text-xl font-semibold text-[#004aad] group-hover:text-[#003080]">{c.name}</h2>
             <p className="text-gray-600 mt-1">Course ID: {c.code}</p>
           </Link>
         ))}
