@@ -6,7 +6,7 @@ export const RateCourse = () => {
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(1); // Default to 0 stars
   const { code } = useParams();
-  const { postComment, reviews } = useRateCourse(code);
+  const { postComment, reviews, upvoteReview, downvoteReview } = useRateCourse(code);
 
   const onCommentChange = (e) => {
     setComment(e.target.value);
@@ -51,22 +51,45 @@ export const RateCourse = () => {
         Post
       </button>
 
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Review</th>
-            <th>Rating</th>
-          </tr>
-        </thead>
-        <tbody>
-          {reviews.map((review) => (
-            <tr key={review._id}>
-              <td>{review.review}</td>
-              <td>{"⭐".repeat(review.rating)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="w-full max-w-4xl space-y-6 pt-6">
+        {Array.isArray(reviews) && reviews.map((review) => (
+          review && (
+            <div
+              key={review._id}
+              className="bg-white rounded-xl shadow-md p-6 border border-gray-200"
+            >
+              <p className="text-gray-800 text-lg mb-3">{review.review}</p>
+              <div className="flex">
+                {Array.from({ length: 5 }).map((_, i) =>
+                  <span key={i} className="mr-1 text-xl">
+                    {i < review.rating ? "⭐" : "☆"}
+                  </span>
+                )}
+              </div>
+
+              <div className="flex items-center gap-3 mt-4">
+                <button 
+                  className="btn btn-sm btn-outline" 
+                  onClick={() => upvoteReview(review._id)}
+                >
+                  🔼
+                </button>
+
+                <span className="font-medium text-gray-700"> 
+                  {review.vote ?? 0} votes
+                </span>
+
+                <button 
+                  className="btn btn-sm btn-outline" 
+                  onClick={() => downvoteReview(review._id)}
+                >
+                  🔽
+                </button>
+              </div>
+            </div>
+          )
+        ))}
+      </div>
     </div>
   );
 };
