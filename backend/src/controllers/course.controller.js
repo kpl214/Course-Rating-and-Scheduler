@@ -11,6 +11,7 @@ export const createReview = async (req, res) => {
       review,
       rating,
       courseId: course._id,
+      vote: 0,
     });
 
     await newReview.save();
@@ -47,3 +48,29 @@ export const getReviews = async (req, res) => {
   }
 };
 
+export const upvoteReview = async (req, res) => {
+  try {
+    const review = await Review.findByIdAndUpdate(
+      req.params.id,
+      { $inc: { vote: 1 } },
+      { new: true }
+    );
+    console.log(review);
+    res.status(200).json(review);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const downvoteReview = async (req, res) => {
+  try {
+    const review = await Review.findByIdAndUpdate(
+      req.params.id,
+      { $inc: { vote: -1 } },
+      { new: true }
+    );
+    res.status(200).json(review);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

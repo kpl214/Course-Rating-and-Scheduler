@@ -1,5 +1,5 @@
 import express from "express";
-import { createReview, getCourses, getReviews } from "../controllers/course.controller.js"
+import { createReview, getCourses, getReviews, upvoteReview, downvoteReview } from "../controllers/course.controller.js"
 import { initAuth } from '@propelauth/express';
 
 const {
@@ -17,5 +17,9 @@ router.post("/:code/reviews", requireUser, createReview);
 router.get("/all", requireUser, getCourses);
 
 router.get("/:code/reviews", requireUser, getReviews);
+
+router.post("/reviews/:id/upvote", requireUser, upvoteReview);
+
+router.post("/reviews/:id/downvote", requireUser, downvoteReview);
 
 export default router;
