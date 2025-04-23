@@ -23,8 +23,12 @@ export const RateCourse = () => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4 w-full pt-16">
-      <div className="text-4xl font-extrabold text-blue-700 bg-blue-100 px-6 py-3 rounded-lg shadow-lg tracking-wide">{code}</div>
+    <div className="flex flex-col items-center gap-5 w-full pt-12">
+      <div className="text-4xl font-extrabold bg-blue-100 px-6 py-3 rounded-lg shadow-lg tracking-wide"
+        style={{color: "#004aad"}}
+      >
+        {code}
+      </div>
       <textarea
         className="textarea textarea-bordered w-full max-w-2xl p-4 text-lg"
         placeholder="Write your review..."
