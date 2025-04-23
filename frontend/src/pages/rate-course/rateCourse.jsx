@@ -23,11 +23,11 @@ export const RateCourse = () => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4 w-full">
-      <div className="text-xl badge badge-soft badge-info">{code}</div>
+    <div className="flex flex-col items-center gap-4 w-full pt-16">
+      <div className="text-4xl font-extrabold text-blue-700 bg-blue-100 px-6 py-3 rounded-lg shadow-lg tracking-wide">{code}</div>
       <textarea
-        className="textarea"
-        placeholder="Post"
+        className="textarea textarea-bordered w-full max-w-2xl p-4 text-lg"
+        placeholder="Write your review..."
         value={comment}
         onChange={onCommentChange}
       ></textarea>
